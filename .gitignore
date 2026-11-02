@@ -12,3 +12,4 @@ data/test_images/
 *.onnx
 .DS_Store
 Thumbs.db
+data/coco/

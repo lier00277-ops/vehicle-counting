@@ -14,7 +14,7 @@ from pathlib import Path
 import cv2
 from ultralytics import YOLO
 
-VEHICLE_CLASSES = {"car", "bus", "truck", "motorcycle", "bicycle"}
+VEHICLE_CLASSES = {"car", "bus", "truck", "motorcycle"}
 WEIGHTS = Path(r"D:\stage2\weights\yolo11n.pt")
 IMG_EXTS = {".jpg", ".jpeg", ".png", ".bmp"}
 
