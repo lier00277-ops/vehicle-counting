@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+.env
+weights/
+results/
+data/test_images/
+.ultralytics/
+*.pt
+*.pth
+*.onnx
+.DS_Store
+Thumbs.db

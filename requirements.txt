@@ -1,0 +1,11 @@
+torch
+torchvision
+ultralytics
+opencv-python
+numpy
+pillow
+pandas
+matplotlib
+python-dotenv
+requests
+segment-anything @ git+https://github.com/facebookresearch/segment-anything.git
