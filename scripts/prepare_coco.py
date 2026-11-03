@@ -1,12 +1,4 @@
-"""从 COCO val2017 里挑选车辆数量适中的道路场景图，下载图片并生成 ground_truth.csv。
-
-用法：
-    python scripts/prepare_coco.py
-
-产物：
-    data/test_images/*.jpg
-    data/ground_truth.csv   （filename, cars, buses, trucks, motorcycles, total）
-"""
+"""从 COCO val2017 挑图，下载图片并生成 ground_truth.csv。"""
 from __future__ import annotations
 
 import json
@@ -57,11 +49,11 @@ def main() -> None:
     cands = []
     for iid, c in per_img.items():
         n = sum(c.values())
-        if not (4 <= n <= 10):
+        if not (3 <= n <= 8):
             continue
         areas = sorted(area_by_img.get(iid, [0]))
         med = areas[len(areas) // 2]
-        if med >= 0.006:
+        if med >= 0.015:
             cands.append((iid, c))
     random.shuffle(cands)
     picks = cands[:N]

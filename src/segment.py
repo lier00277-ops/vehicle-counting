@@ -1,8 +1,4 @@
-"""SAM 框提示分割：给一个框，输出该区域的掩膜。
-
-用法：
-    python -m src.segment --image assets/demo1.jpg --box 300 100 1800 1350
-"""
+"""SAM 框提示分割：给一个框，输出掩膜。"""
 from __future__ import annotations
 
 import argparse
