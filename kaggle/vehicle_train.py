@@ -1,9 +1,4 @@
 """在 Kaggle GPU 上微调 YOLO26 车辆检测模型。
-
-用法：把本文件内容粘贴到 Kaggle Notebook 的一个单元格里运行。
-前提：
-1. 已上传 vehicle_det_kaggle.zip 为 Kaggle Dataset
-2. Notebook 右侧 Accelerator 选 GPU，Internet 选 On（装 ultralytics 用）
 """
 import glob
 import os
