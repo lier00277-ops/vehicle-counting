@@ -89,6 +89,8 @@ VLM_MODEL=glm-4v-flash
 
 YOLO 快、能给出位置框；大模型平均误差略低，能描述场景。对比图见 `figures/comparison_samples.png`，详细分析见 `docs/对比实验报告.md`。
 
+另外做了一组微调实验（240 张训练 / 60 张验证，30 epoch），详见报告第 9 节。
+
 ## 学习内容对应
 
 | 学习内容 | 在项目里 |
