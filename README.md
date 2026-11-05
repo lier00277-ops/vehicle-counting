@@ -26,7 +26,9 @@ stage2/
 │   ├── vlm.py                    # 智谱 API 封装
 │   ├── segment.py                # SAM 分割
 │   ├── evaluate.py               # 对比指标
-│   └── compare.py                # 并排对比图
+│   ├── compare.py                # 并排对比图
+│   ├── augment.py                # OpenCV 增强演示
+│   └── vehicle_classifier.py     # 小分类器训练演示
 ├── scripts/
 │   ├── prepare_coco.py           # 准备数据
 │   └── demo_yolo_sam.py          # 检测 + 分割演示
@@ -86,3 +88,13 @@ VLM_MODEL=glm-4v-flash
 | GLM-4V-Flash | 1.10 | 9/40 | 2.11s | 537 tokens/张 |
 
 YOLO 快、能给出位置框；大模型平均误差略低，能描述场景。对比图见 `figures/comparison_samples.png`，详细分析见 `docs/对比实验报告.md`。
+
+## 学习内容对应
+
+| 学习内容 | 在项目里 |
+|---|---|
+| OpenCV | 读图、缩放、画框、画掩膜、翻转/裁剪/亮度增强（`src/augment.py`） |
+| PyTorch | torch 张量推理；torchvision 增强 + DataLoader + 训练循环（`src/vehicle_classifier.py`） |
+| YOLO | 车辆检测 |
+| SAM | 框提示分割 |
+| Transformer / 多模态大模型 | GLM-4V 调用与 JSON 输出 |
