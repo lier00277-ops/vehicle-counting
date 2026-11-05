@@ -28,7 +28,6 @@ stage2/
 │   ├── evaluate.py               # 对比指标
 │   ├── compare.py                # 并排对比图
 │   ├── augment.py                # OpenCV 增强演示
-│   └── vehicle_classifier.py     # 小分类器训练演示
 ├── scripts/
 │   ├── prepare_coco.py           # 准备数据
 │   └── demo_yolo_sam.py          # 检测 + 分割演示
@@ -96,7 +95,7 @@ YOLO 快、能给出位置框；大模型平均误差略低，能描述场景。
 | 学习内容 | 在项目里 |
 |---|---|
 | OpenCV | 读图、缩放、画框、画掩膜、翻转/裁剪/亮度增强（`src/augment.py`） |
-| PyTorch | torch 张量推理；torchvision 增强 + DataLoader + 训练循环（`src/vehicle_classifier.py`） |
+| PyTorch | torch 张量推理；用预训练 YOLO26 做微调（见报告第 9 节） |
 | YOLO | 车辆检测 |
 | SAM | 框提示分割 |
 | Transformer / 多模态大模型 | GLM-4V 调用与 JSON 输出 |
