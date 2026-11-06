@@ -3,7 +3,7 @@
 同一张道路/街景图片，用两套方案清点车辆并对比：
 
 - **传统方案**：YOLO26 检测车辆，可选 SAM 分割
-- **大模型方案**：智谱 GLM-4V-Flash 清点并描述场景
+- **大模型方案**：智谱 GLM-5.3-FlashX 清点并描述场景
 
 ## 数据
 
@@ -27,10 +27,13 @@ stage2/
 │   ├── segment.py                # SAM 分割
 │   ├── evaluate.py               # 对比指标
 │   ├── compare.py                # 并排对比图
+│   ├── figures.py                # 生成图表
 │   ├── augment.py                # OpenCV 增强演示
 ├── scripts/
-│   ├── prepare_coco.py           # 准备数据
-│   └── demo_yolo_sam.py          # 检测 + 分割演示
+│   ├── prepare_coco.py           # 准备测试数据
+│   └── prepare_detection_dataset.py  # 准备微调数据集
+├── kaggle/
+│   └── vehicle_train.py          # Kaggle 微调脚本
 ├── data/
 │   ├── test_images/              # 测试图，不入库
 │   └── ground_truth.csv
@@ -76,7 +79,7 @@ python -m src.compare
 ```
 VLM_API_KEY=...
 VLM_BASE_URL=https://open.bigmodel.cn/api/paas/v4
-VLM_MODEL=glm-4v-flash
+VLM_MODEL=glm-5.3-flashx
 ```
 
 ## 结果
@@ -84,9 +87,9 @@ VLM_MODEL=glm-4v-flash
 | 方案 | MAE | 完全一致 | 单张耗时 | 成本 |
 |---|---|---|---|---|
 | YOLO26 | 1.25 | 12/40 | 约 0.05s | 0 |
-| GLM-4V-Flash | 1.10 | 9/40 | 2.11s | 537 tokens/张 |
+| GLM-5.3-FlashX | 1.02 | 12/40 | 4.70s | 892 tokens/张 |
 
-YOLO 快、能给出位置框；大模型平均误差略低，能描述场景。对比图见 `figures/comparison_samples.png`，详细分析见 `docs/对比实验报告.md`。
+YOLO 快、能给出位置框；大模型平均误差更低、能描述场景。对比图见 `figures/comparison_samples.png`，详细分析见 `docs/对比实验报告.md`。
 
 另外做了一组微调实验（240 张训练 / 60 张验证，30 epoch），详见报告第 9 节。
 
@@ -98,4 +101,4 @@ YOLO 快、能给出位置框；大模型平均误差略低，能描述场景。
 | PyTorch | torch 张量推理；用预训练 YOLO26 做微调（见报告第 9 节） |
 | YOLO | 车辆检测 |
 | SAM | 框提示分割 |
-| Transformer / 多模态大模型 | GLM-4V 调用与 JSON 输出 |
+| Transformer / 多模态大模型 | GLM-5.3-FlashX 调用与 JSON 输出 |
