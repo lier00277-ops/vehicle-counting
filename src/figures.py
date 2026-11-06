@@ -25,7 +25,7 @@ def mae_chart(df: pd.DataFrame) -> None:
     y = df["yolo_diff"].abs().mean()
     v = df["vlm_diff"].abs().mean()
     fig, ax = plt.subplots(figsize=(6, 4))
-    bars = ax.bar(["YOLO26", "GLM-4V-Flash"], [y, v], color=["#4c72b0", "#c44e52"])
+    bars = ax.bar(["YOLO26", "GLM-5.3-FlashX"], [y, v], color=["#4c72b0", "#c44e52"])
     for b, val in zip(bars, [y, v]):
         ax.text(b.get_x() + b.get_width() / 2, val + 0.02, f"{val:.2f}", ha="center")
     ax.set_ylabel("平均绝对误差 MAE")
@@ -39,7 +39,7 @@ def error_hist(df: pd.DataFrame) -> None:
     fig, ax = plt.subplots(figsize=(7, 4))
     bins = range(-6, 7)
     ax.hist(df["yolo_diff"], bins=bins, alpha=0.6, label="YOLO26")
-    ax.hist(df["vlm_diff"], bins=bins, alpha=0.6, label="GLM-4V-Flash")
+    ax.hist(df["vlm_diff"], bins=bins, alpha=0.6, label="GLM-5.3-FlashX")
     ax.axvline(0, color="black", lw=1)
     ax.set_xlabel("预测数 - 真值")
     ax.set_ylabel("图片数")
